@@ -59,7 +59,7 @@ gantt
 - [x] Create monorepo directory layout (`apps/web`, `apps/api`, `apps/ai-service`).
 - [x] Set up root `.gitignore` and global configurations.
 - [x] Setup `docker-compose.yml` (Postgres, Redis, ChromaDB).
-- [ ] Initialize Next.js front-end in `apps/web`.
+- [x] Initialize Next.js front-end in `apps/web`.
 - [ ] Initialize NestJS backend in `apps/api`.
 - [ ] Initialize FastAPI Python structure in `apps/ai-service`.
 - [ ] Test container startup and database connections.

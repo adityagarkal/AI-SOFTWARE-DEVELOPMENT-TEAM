@@ -6,9 +6,9 @@
 - [x] **Step 2: Docker Infrastructure Setup** <!-- id: step-2 -->
   - [x] Create `docker-compose.yml` (PostgreSQL, Redis, ChromaDB) <!-- id: 2.1 -->
   - [x] Test local container configuration <!-- id: 2.2 -->
-- [ ] **Step 3: Next.js Front-end Setup (`apps/web`)** <!-- id: step-3 -->
-  - [ ] Run non-interactive `create-next-app` in `apps/web` <!-- id: 3.1 -->
-  - [ ] Verify `npm run build` succeeds <!-- id: 3.2 -->
+- [x] **Step 3: Next.js Front-end Setup (`apps/web`)** <!-- id: step-3 -->
+  - [x] Run non-interactive `create-next-app` in `apps/web` <!-- id: 3.1 -->
+  - [x] Verify `npm run build` succeeds <!-- id: 3.2 -->
 - [ ] **Step 4: NestJS Backend Setup (`apps/api`)** <!-- id: step-4 -->
   - [ ] Run non-interactive `@nestjs/cli new` in `apps/api` <!-- id: 4.1 -->
   - [ ] Verify `npm run build` succeeds <!-- id: 4.2 -->
