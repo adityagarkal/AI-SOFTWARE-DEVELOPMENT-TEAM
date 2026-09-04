@@ -1,72 +1,65 @@
-# Phase 1: Scaffolding and Environment Configuration
+# Phase 2: Database Schema & LangGraph Foundations
 
-This phase establishes the foundational structure of the **AI Software Development Team** platform. We will set up a clean monorepo folder layout, configure local database services using Docker Compose, and initialize the front-end, backend-API, and AI service frameworks.
+This phase implements the data layer and core multi-agent state engine for the **AI Software Development Team** platform. We will set up Prisma ORM in NestJS to manage PostgreSQL relational tables, define the Python `TeamState` state machine for LangGraph, and build the service endpoints to trigger and stream workflow runs.
 
 ## User Review Required
 
 > [!IMPORTANT]
-> - We will run the front-end, backend, and AI service as separate services within a single repository (monorepo structure) using independent dependencies to prevent version conflicts.
-> - We will use Docker Compose for managing local state databases (PostgreSQL, Redis, ChromaDB). Please ensure you have **Docker Desktop** installed and running on your Windows host machine.
+> - We will use **Prisma ORM** inside `apps/api` for typed PostgreSQL migrations and queries.
+> - LangGraph will use a Redis or In-Memory checkpointer to persist state across human-in-the-loop approval interrupts.
+> - The initial multi-agent graph will connect: `ProjectManagerNode -> BusinessAnalystNode -> TechLeadReviewerNode`.
 
 ---
 
 ## Proposed Changes
 
-### Monorepo Structure
+### Component 1: NestJS Database Layer & Prisma Setup (`apps/api`)
 
-We will create the following layout:
-* `apps/web/` - Next.js front-end
-* `apps/api/` - NestJS backend gateway
-* `apps/ai-service/` - FastAPI + LangGraph AI service
-* Root configurations for version control and workspace management.
+#### [NEW] [apps/api/prisma/schema.prisma](file:///d:/BE%20Major%20Project/AI-SOFTWARE-DEVELOPMENT-TEAM/apps/api/prisma/schema.prisma)
+Define relational database schemas:
+*   `User`: Authentication and workspace ownership (`id`, `email`, `passwordHash`, `name`).
+*   `Project`: Core project metadata (`id`, `userId`, `title`, `description`, `status`).
+*   `AgentRun`: Execution logs (`id`, `projectId`, `agentRole`, `status`, `inputPrompt`, `outputPayload`, `executionTimeMs`).
+*   `Artifact`: Generated outputs (`id`, `projectId`, `agentRunId`, `artifactType`, `content`, `versionNumber`).
+*   `Approval`: Human-in-the-loop review state (`id`, `projectId`, `agentRunId`, `decision`, `userFeedback`).
 
-#### [NEW] [docker-compose.yml](file:///d:/BE%20Major%20Project/AI-SOFTWARE-DEVELOPMENT-TEAM/docker-compose.yml)
-Create a Docker Compose configuration mapping the standard service ports:
-- PostgreSQL (Port `5432`)
-- Redis (Port `6379`)
-- ChromaDB (Port `8000` or hosted locally within FastAPI)
-
-#### [NEW] [.gitignore](file:///d:/BE%20Major%20Project/AI-SOFTWARE-DEVELOPMENT-TEAM/.gitignore)
-Create a root gitignore file to exclude `node_modules`, `.env` files, build targets, Python virtual environments (`.venv`), and local docker database volume directories.
+#### [NEW] [apps/api/src/prisma/prisma.service.ts](file:///d:/BE%20Major%20Project/AI-SOFTWARE-DEVELOPMENT-TEAM/apps/api/src/prisma/prisma.service.ts)
+Global database access service extending `PrismaClient`.
 
 ---
 
-### Component 1: Front-end (Next.js)
+### Component 2: Python LangGraph Engine & State (`apps/ai-service`)
 
-#### [NEW] [apps/web/](file:///d:/BE%20Major%20Project/AI-SOFTWARE-DEVELOPMENT-TEAM/apps/web)
-Scaffold a modern Next.js project using `create-next-app` with:
-- TypeScript, Tailwind CSS, ESLint, App Router, and a `src/` directory.
+#### [NEW] [apps/ai-service/app/schemas/state.py](file:///d:/BE%20Major%20Project/AI-SOFTWARE-DEVELOPMENT-TEAM/apps/ai-service/app/schemas/state.py)
+Define the `TeamState` TypedDict for graph node communication:
+*   `project_id`: String UUID.
+*   `user_idea`: Original input prompt from the user.
+*   `scope`: PM Agent output (milestones, risks, scope).
+*   `requirements`: BA Agent output (functional/non-functional specs).
+*   `architecture`: Architect Agent output (tech stack, DB schema, API design).
+*   `reviewer_feedback`: Reviewer Agent feedback string.
+*   `approval_status`: PENDING / APPROVED / REJECTED.
+*   `current_agent`: Currently active node.
 
----
+#### [NEW] [apps/ai-service/app/graphs/team_graph.py](file:///d:/BE%20Major%20Project/AI-SOFTWARE-DEVELOPMENT-TEAM/apps/ai-service/app/graphs/team_graph.py)
+Define the LangGraph state machine:
+*   Nodes: `project_manager_node`, `business_analyst_node`, `tech_lead_reviewer_node`.
+*   Conditional Edges: Route back to planning nodes if the Tech Lead requests revisions.
 
-### Component 2: Backend (NestJS)
-
-#### [NEW] [apps/api/](file:///d:/BE%20Major%20Project/AI-SOFTWARE-DEVELOPMENT-TEAM/apps/api)
-Scaffold a NestJS backend application using `@nestjs/cli` configured for:
-- TypeScript and npm package manager.
-
----
-
-### Component 3: AI Service (FastAPI)
-
-#### [NEW] [apps/ai-service/](file:///d:/BE%20Major%20Project/AI-SOFTWARE-DEVELOPMENT-TEAM/apps/ai-service)
-Initialize a Python FastAPI project with:
-- A virtual environment (`.venv`).
-- `requirements.txt` containing `fastapi`, `uvicorn`, `langgraph`, and Google Gemini dependencies.
-- A basic `main.py` health endpoint.
+#### [NEW] [apps/ai-service/app/api/workflow.py](file:///d:/BE%20Major%20Project/AI-SOFTWARE-DEVELOPMENT-TEAM/apps/ai-service/app/api/workflow.py)
+FastAPI router for workflow execution:
+*   `POST /api/workflow/start`: Triggers graph execution.
+*   `GET /api/workflow/{run_id}/state`: Fetches current graph checkpoint.
 
 ---
 
 ## Verification Plan
 
 ### Automated Checks
-- Verify node projects build successfully:
-  - `npm run build` inside `apps/web`
-  - `npm run build` inside `apps/api`
-- Run linting check for frontend/backend.
-- Validate FastAPI starts successfully using `uvicorn`.
+- Run Prisma schema validation: `npx prisma validate` inside `apps/api`.
+- Test Python graph initialization and node transitions using `pytest`.
+- Run NestJS build check: `npm run build` inside `apps/api`.
 
 ### Manual Verification
-- Test Docker Compose starts all database containers (`docker compose up -d`).
-- Run a basic HTTP check on the FastAPI service endpoint: `http://localhost:8000/docs`.
-- Test database connection configurations.
+- Test triggering a workflow execution via FastAPI Swagger UI (`http://localhost:8000/docs`).
+- Verify graph state persistence across node runs.
