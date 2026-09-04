@@ -100,6 +100,18 @@ This document serves as an **Executive Summary Log** of every Phase and Step com
 
 ---
 
+### 📌 Step 3: FastAPI Workflow Execution Endpoints (`apps/ai-service`)
+*   **Goal:** Create REST API endpoints to trigger and retrieve multi-agent graph executions.
+*   **Rationale:** Exposes REST APIs so the NestJS backend gateway can trigger agent workflows, pass software project prompts, and retrieve generated artifact states.
+*   **What was changed:**
+    *   Created [app/api/workflow.py](file:///d:/BE%20Major%20Project/AI-SOFTWARE-DEVELOPMENT-TEAM/apps/ai-service/app/api/workflow.py) defining `POST /api/workflow/start` and `GET /api/workflow/{project_id}/status`.
+    *   Mounted `workflow_router` with prefix `/api/workflow` in `apps/ai-service/main.py`.
+*   **Verification & Test Results:**
+    *   Invoked live graph execution via HTTP POST to `http://localhost:8000/api/workflow/start`.
+    *   **Result:** LangGraph executed `PM Agent -> BA Agent -> Tech Lead Reviewer` sequentially and returned `"status": "APPROVED"` with generated scope and requirement artifacts.
+
+---
+
 ## Phase 3: Analytical Planning Agents (UPCOMING)
 **Target Period:** October 16, 2026 – November 6, 2026 | **Status:** ⏳ Pending
 

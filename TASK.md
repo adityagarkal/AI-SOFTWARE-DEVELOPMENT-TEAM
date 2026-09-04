@@ -11,10 +11,10 @@
   - [x] Create `apps/ai-service/app/graphs/nodes.py` for agent node functions <!-- id: 2.2.2 -->
   - [x] Create `apps/ai-service/app/graphs/team_graph.py` assembling the LangGraph state graph <!-- id: 2.2.3 -->
 
-- [ ] **Step 3: FastAPI Workflow Execution Endpoints (`apps/ai-service`)** <!-- id: step-2-3 -->
-  - [ ] Create `apps/ai-service/app/api/workflow.py` with `POST /api/workflow/start` endpoint <!-- id: 2.3.1 -->
-  - [ ] Mount workflow router in `apps/ai-service/main.py` <!-- id: 2.3.2 -->
-  - [ ] Test workflow execution via FastAPI Swagger UI <!-- id: 2.3.3 -->
+- [x] **Step 3: FastAPI Workflow Execution Endpoints (`apps/ai-service`)** <!-- id: step-2-3 -->
+  - [x] Create `apps/ai-service/app/api/workflow.py` with `POST /api/workflow/start` endpoint <!-- id: 2.3.1 -->
+  - [x] Mount workflow router in `apps/ai-service/main.py` <!-- id: 2.3.2 -->
+  - [x] Test workflow execution via REST API / FastAPI Swagger UI <!-- id: 2.3.3 -->
 
 - [ ] **Step 4: NestJS Workflow Controller & Integration (`apps/api`)** <!-- id: step-2-4 -->
   - [ ] Create `apps/api/src/workflow/workflow.controller.ts` bridge to FastAPI <!-- id: 2.4.1 -->

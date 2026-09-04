@@ -3,6 +3,8 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from dotenv import load_dotenv
 
+from app.api.workflow import router as workflow_router
+
 # Load environment variables
 load_dotenv()
 
@@ -20,6 +22,9 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
+# Register API routers
+app.include_router(workflow_router, prefix="/api/workflow", tags=["Workflow Execution"])
 
 
 @app.get("/")
