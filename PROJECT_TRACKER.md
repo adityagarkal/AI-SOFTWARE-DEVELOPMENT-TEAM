@@ -41,18 +41,18 @@ gantt
 - [ ] Create `docker-compose.yml` for Postgres, Redis, and ChromaDB.
 
 ### ⚠️ Critical Deadlines
-*   **Milestone 1 (Infra Setup):** September 5, 2026 (In 24 Days)
-*   **Milestone 2 (Sequential MVP):** September 26, 2026
-*   **Milestone 3 (Full 9-Agent Loop):** October 17, 2026
-*   **Milestone 4 (RAG & HITL):** November 21, 2026
-*   **Milestone 5 (Final Deploy & Viva):** December 25, 2026
+*   **Milestone 1 (Infra Setup):** September 25, 2026 (In 21 Days)
+*   **Milestone 2 (Sequential MVP):** October 16, 2026
+*   **Milestone 3 (Full 9-Agent Loop):** November 6, 2026
+*   **Milestone 4 (RAG & HITL):** December 25, 2026
+*   **Milestone 5 (Final Deploy & Viva):** January 22, 2027
 
 ---
 
 ## 🗓️ Phase-by-Phase Task Checklist
 
 ### Phase 1: Setup & Scaffolding (Weeks 1–3)
-**Target: September 5, 2026 | Progress: [████░░░░░░] 40%**
+**Target: September 25, 2026 | Progress: [████░░░░░░] 40%**
 
 - [x] Define Project Architecture & Roadmap.
 - [x] Verify Node.js, npm, and Python environmental dependencies.
@@ -68,7 +68,7 @@ gantt
 ---
 
 ### Phase 2: Database Schema & LangGraph Foundations (Weeks 4–6)
-**Target: September 26, 2026 | Progress: [░░░░░░░░░░] 0%**
+**Target: October 16, 2026 | Progress: [░░░░░░░░░░] 0%**
 
 - [ ] Design PostgreSQL database models (Prisma/TypeORM schemas).
 - [ ] Implement tables for `Projects`, `AgentRuns`, `Artifacts`, and `Approvals`.
@@ -81,7 +81,7 @@ gantt
 ---
 
 ### Phase 3: Analytical Planning Agents (Weeks 7–9)
-**Target: October 17, 2026 | Progress: [░░░░░░░░░░] 0%**
+**Target: November 6, 2026 | Progress: [░░░░░░░░░░] 0%**
 
 - [ ] **Project Manager Agent (PMA)**
   - [ ] Implement system prompt & output schema.
@@ -97,7 +97,7 @@ gantt
 ---
 
 ### Phase 4: Execution, QA & Reviewer Agents (Weeks 10–12)
-**Target: November 7, 2026 | Progress: [░░░░░░░░░░] 0%**
+**Target: November 27, 2026 | Progress: [░░░░░░░░░░] 0%**
 
 - [ ] **UI/UX Agent**
   - [ ] Generate wireframe specifications and screen flow plans.
@@ -112,7 +112,7 @@ gantt
 ---
 
 ### Phase 5: RAG Knowledge Base Ingestion (Weeks 13–14)
-**Target: November 21, 2026 | Progress: [░░░░░░░░░░] 0%**
+**Target: December 11, 2026 | Progress: [░░░░░░░░░░] 0%**
 
 - [ ] Create PDF & text parser endpoints in NestJS.
 - [ ] Set up ChromaDB collections schema.
@@ -123,7 +123,7 @@ gantt
 ---
 
 ### Phase 6: Human-in-the-Loop & Version Control (Weeks 15–16)
-**Target: December 5, 2026 | Progress: [░░░░░░░░░░] 0%**
+**Target: December 25, 2026 | Progress: [░░░░░░░░░░] 0%**
 
 - [ ] Implement LangGraph `interrupts` at key review nodes.
 - [ ] Build front-end forms for Approve / Regenerate / Reject actions.
@@ -133,7 +133,7 @@ gantt
 ---
 
 ### Phase 7: Evaluation, Deploy & Thesis (Weeks 17–20)
-**Target: December 25, 2026 | Progress: [░░░░░░░░░░] 0%**
+**Target: January 22, 2027 | Progress: [░░░░░░░░░░] 0%**
 
 - [ ] Deploy Next.js to Vercel, NestJS/FastAPI to Render/Railway.
 - [ ] Setup production database instance (e.g., Neon Postgres).
