@@ -12,6 +12,6 @@
 - [x] **Step 4: NestJS Backend Setup (`apps/api`)** <!-- id: step-4 -->
   - [x] Run non-interactive `@nestjs/cli new` in `apps/api` <!-- id: 4.1 -->
   - [x] Verify `npm run build` succeeds <!-- id: 4.2 -->
-- [ ] **Step 5: FastAPI AI Service Setup (`apps/ai-service`)** <!-- id: step-5 -->
-  - [ ] Initialize Python structure, `requirements.txt`, and `main.py` <!-- id: 5.1 -->
-  - [ ] Verify FastAPI health endpoint runs cleanly <!-- id: 5.2 -->
+- [x] **Step 5: FastAPI AI Service Setup (`apps/ai-service`)** <!-- id: step-5 -->
+  - [x] Initialize Python structure, `requirements.txt`, and `main.py` <!-- id: 5.1 -->
+  - [x] Verify FastAPI health endpoint runs cleanly <!-- id: 5.2 -->

@@ -24,12 +24,12 @@ gantt
 ```
 
 ### Key Metrics
-*   **Overall Progress:** `[█░░░░░░░░░] 10%`
+*   **Overall Progress:** `[██░░░░░░░░] 20%`
 *   **Total Tasks:** 60
-*   **Completed Tasks:** 6
-*   **Pending Tasks:** 54
-*   **Current Milestone:** **M1 - Environment Setup & Service Scaffolding** (Target: End of Week 3)
-*   **Next Milestone:** **M2 - Core LangGraph Flow & Database Persistence** (Target: End of Week 6)
+*   **Completed Tasks:** 10
+*   **Pending Tasks:** 50
+*   **Current Milestone:** **M1 - Environment Setup & Service Scaffolding** (STATUS: COMPLETED)
+*   **Next Milestone:** **M2 - Core LangGraph Flow & Database Persistence** (Target: October 16, 2026)
 
 ---
 
@@ -52,7 +52,7 @@ gantt
 ## 🗓️ Phase-by-Phase Task Checklist
 
 ### Phase 1: Setup & Scaffolding (Weeks 1–3)
-**Target: September 25, 2026 | Progress: [████░░░░░░] 40%**
+**Target: September 25, 2026 | Progress: [██████████] 100%**
 
 - [x] Define Project Architecture & Roadmap.
 - [x] Verify Node.js, npm, and Python environmental dependencies.
@@ -61,9 +61,9 @@ gantt
 - [x] Setup `docker-compose.yml` (Postgres, Redis, ChromaDB).
 - [x] Initialize Next.js front-end in `apps/web`.
 - [x] Initialize NestJS backend in `apps/api`.
-- [ ] Initialize FastAPI Python structure in `apps/ai-service`.
-- [ ] Test container startup and database connections.
-- [ ] Test service-to-service communication.
+- [x] Initialize FastAPI Python structure in `apps/ai-service`.
+- [x] Test container startup and database connections.
+- [x] Test service-to-service communication.
 
 ---
 
