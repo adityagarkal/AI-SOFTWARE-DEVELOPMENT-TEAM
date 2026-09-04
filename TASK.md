@@ -6,10 +6,10 @@
   - [x] Create `apps/api/src/prisma/prisma.service.ts` database access module <!-- id: 2.1.3 -->
   - [x] Verify Prisma schema validation and NestJS build <!-- id: 2.1.4 -->
 
-- [ ] **Step 2: Python LangGraph `TeamState` & Graph Foundations (`apps/ai-service`)** <!-- id: step-2-2 -->
-  - [ ] Create `apps/ai-service/app/schemas/state.py` defining `TeamState` TypedDict <!-- id: 2.2.1 -->
-  - [ ] Create `apps/ai-service/app/graphs/nodes.py` for agent node functions <!-- id: 2.2.2 -->
-  - [ ] Create `apps/ai-service/app/graphs/team_graph.py` assembling the LangGraph state graph <!-- id: 2.2.3 -->
+- [x] **Step 2: Python LangGraph `TeamState` & Graph Foundations (`apps/ai-service`)** <!-- id: step-2-2 -->
+  - [x] Create `apps/ai-service/app/schemas/state.py` defining `TeamState` TypedDict <!-- id: 2.2.1 -->
+  - [x] Create `apps/ai-service/app/graphs/nodes.py` for agent node functions <!-- id: 2.2.2 -->
+  - [x] Create `apps/ai-service/app/graphs/team_graph.py` assembling the LangGraph state graph <!-- id: 2.2.3 -->
 
 - [ ] **Step 3: FastAPI Workflow Execution Endpoints (`apps/ai-service`)** <!-- id: step-2-3 -->
   - [ ] Create `apps/ai-service/app/api/workflow.py` with `POST /api/workflow/start` endpoint <!-- id: 2.3.1 -->
