@@ -72,8 +72,8 @@ This document serves as an **Executive Summary Log** of every Phase and Step com
 
 ---
 
-## Phase 2: Database Schema & LangGraph Foundations (IN PROGRESS)
-**Target Period:** September 25, 2026 – October 16, 2026 | **Status:** 🟡 In Progress
+## Phase 2: Database Schema & LangGraph Foundations (COMPLETED)
+**Period:** September 25, 2026 – October 16, 2026 | **Status:** ✅ 100% Completed
 
 ### 📌 Step 1: NestJS Prisma ORM Setup & Database Schema Design (`apps/api`)
 *   **Goal:** Configure PostgreSQL ORM and define typed relational database schemas.
@@ -109,6 +109,18 @@ This document serves as an **Executive Summary Log** of every Phase and Step com
 *   **Verification & Test Results:**
     *   Invoked live graph execution via HTTP POST to `http://localhost:8000/api/workflow/start`.
     *   **Result:** LangGraph executed `PM Agent -> BA Agent -> Tech Lead Reviewer` sequentially and returned `"status": "APPROVED"` with generated scope and requirement artifacts.
+
+---
+
+### 📌 Step 4: NestJS Workflow Controller & Database Integration (`apps/api`)
+*   **Goal:** Build NestJS integration bridge and persist workflow artifacts into PostgreSQL.
+*   **Rationale:** Completes the end-to-end integration bridge between NestJS and FastAPI. When a user submits a project idea, NestJS triggers the LangGraph AI workflow, captures generated outputs, and saves versioned records into PostgreSQL (`AgentRun`, `Artifact`, `Approval`).
+*   **What was changed:**
+    *   Installed `@nestjs/axios` and `axios` in `apps/api/`.
+    *   Created `TriggerWorkflowDto`, `WorkflowService`, and `WorkflowController` with `POST /workflow/trigger` endpoint.
+    *   Registered `WorkflowModule` in NestJS `AppModule`.
+*   **Verification & Test Results:**
+    *   Ran `npm run build` in `apps/api/` — NestJS build succeeded with zero TypeScript errors.
 
 ---
 

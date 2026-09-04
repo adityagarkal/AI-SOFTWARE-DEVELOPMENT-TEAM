@@ -16,6 +16,6 @@
   - [x] Mount workflow router in `apps/ai-service/main.py` <!-- id: 2.3.2 -->
   - [x] Test workflow execution via REST API / FastAPI Swagger UI <!-- id: 2.3.3 -->
 
-- [ ] **Step 4: NestJS Workflow Controller & Integration (`apps/api`)** <!-- id: step-2-4 -->
-  - [ ] Create `apps/api/src/workflow/workflow.controller.ts` bridge to FastAPI <!-- id: 2.4.1 -->
-  - [ ] Verify end-to-end integration and NestJS build <!-- id: 2.4.2 -->
+- [x] **Step 4: NestJS Workflow Controller & Integration (`apps/api`)** <!-- id: step-2-4 -->
+  - [x] Create `apps/api/src/workflow/workflow.controller.ts` bridge to FastAPI <!-- id: 2.4.1 -->
+  - [x] Verify end-to-end integration and NestJS build <!-- id: 2.4.2 -->

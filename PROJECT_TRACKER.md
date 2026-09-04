@@ -24,12 +24,12 @@ gantt
 ```
 
 ### Key Metrics
-*   **Overall Progress:** `[██░░░░░░░░] 20%`
+*   **Overall Progress:** `[███░░░░░░░] 30%`
 *   **Total Tasks:** 60
-*   **Completed Tasks:** 10
-*   **Pending Tasks:** 50
-*   **Current Milestone:** **M1 - Environment Setup & Service Scaffolding** (STATUS: COMPLETED)
-*   **Next Milestone:** **M2 - Core LangGraph Flow & Database Persistence** (Target: October 16, 2026)
+*   **Completed Tasks:** 18
+*   **Pending Tasks:** 42
+*   **Current Milestone:** **M2 - Core LangGraph Flow & Database Persistence** (STATUS: COMPLETED)
+*   **Next Milestone:** **M3 - Full 9-Agent Loop & Analytical Planning Agents** (Target: November 6, 2026)
 
 ---
 
@@ -68,15 +68,15 @@ gantt
 ---
 
 ### Phase 2: Database Schema & LangGraph Foundations (Weeks 4–6)
-**Target: October 16, 2026 | Progress: [░░░░░░░░░░] 0%**
+**Target: October 16, 2026 | Progress: [██████████] 100%**
 
-- [ ] Design PostgreSQL database models (Prisma/TypeORM schemas).
-- [ ] Implement tables for `Projects`, `AgentRuns`, `Artifacts`, and `Approvals`.
-- [ ] Define Python `TeamState` schema for LangGraph.
-- [ ] Build first basic sequential Graph (`PM -> BA -> Reviewer`).
-- [ ] Integrate Redis checkpointer for workflow state saving.
-- [ ] Develop REST API endpoints to trigger LangGraph runs from NestJS.
-- [ ] Set up WebSocket server in NestJS for real-time console log streaming.
+- [x] Design PostgreSQL database models (Prisma/TypeORM schemas).
+- [x] Implement tables for `Projects`, `AgentRuns`, `Artifacts`, and `Approvals`.
+- [x] Define Python `TeamState` schema for LangGraph.
+- [x] Build first basic sequential Graph (`PM -> BA -> Reviewer`).
+- [x] Integrate Redis checkpointer for workflow state saving.
+- [x] Develop REST API endpoints to trigger LangGraph runs from NestJS.
+- [x] Set up WebSocket server in NestJS for real-time console log streaming.
 
 ---
 
