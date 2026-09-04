@@ -1,17 +1,21 @@
-# Task Checklist — Phase 1: Scaffolding & Environment Configuration
+# Task Checklist — Phase 2: Database Schema & LangGraph Foundations
 
-- [x] **Step 1: Monorepo Folder Layout & Root Configuration** <!-- id: step-1 -->
-  - [x] Create folder structure: `apps/web`, `apps/api`, `apps/ai-service` <!-- id: 1.1 -->
-  - [x] Create root `.gitignore` file <!-- id: 1.2 -->
-- [x] **Step 2: Docker Infrastructure Setup** <!-- id: step-2 -->
-  - [x] Create `docker-compose.yml` (PostgreSQL, Redis, ChromaDB) <!-- id: 2.1 -->
-  - [x] Test local container configuration <!-- id: 2.2 -->
-- [x] **Step 3: Next.js Front-end Setup (`apps/web`)** <!-- id: step-3 -->
-  - [x] Run non-interactive `create-next-app` in `apps/web` <!-- id: 3.1 -->
-  - [x] Verify `npm run build` succeeds <!-- id: 3.2 -->
-- [x] **Step 4: NestJS Backend Setup (`apps/api`)** <!-- id: step-4 -->
-  - [x] Run non-interactive `@nestjs/cli new` in `apps/api` <!-- id: 4.1 -->
-  - [x] Verify `npm run build` succeeds <!-- id: 4.2 -->
-- [x] **Step 5: FastAPI AI Service Setup (`apps/ai-service`)** <!-- id: step-5 -->
-  - [x] Initialize Python structure, `requirements.txt`, and `main.py` <!-- id: 5.1 -->
-  - [x] Verify FastAPI health endpoint runs cleanly <!-- id: 5.2 -->
+- [x] **Step 1: NestJS Prisma ORM Setup & Database Schema Design (`apps/api`)** <!-- id: step-2-1 -->
+  - [x] Install Prisma dependencies (`prisma`, `@prisma/client`) in `apps/api` <!-- id: 2.1.1 -->
+  - [x] Create `apps/api/prisma/schema.prisma` with models (`User`, `Project`, `AgentRun`, `Artifact`, `Approval`) <!-- id: 2.1.2 -->
+  - [x] Create `apps/api/src/prisma/prisma.service.ts` database access module <!-- id: 2.1.3 -->
+  - [x] Verify Prisma schema validation and NestJS build <!-- id: 2.1.4 -->
+
+- [ ] **Step 2: Python LangGraph `TeamState` & Graph Foundations (`apps/ai-service`)** <!-- id: step-2-2 -->
+  - [ ] Create `apps/ai-service/app/schemas/state.py` defining `TeamState` TypedDict <!-- id: 2.2.1 -->
+  - [ ] Create `apps/ai-service/app/graphs/nodes.py` for agent node functions <!-- id: 2.2.2 -->
+  - [ ] Create `apps/ai-service/app/graphs/team_graph.py` assembling the LangGraph state graph <!-- id: 2.2.3 -->
+
+- [ ] **Step 3: FastAPI Workflow Execution Endpoints (`apps/ai-service`)** <!-- id: step-2-3 -->
+  - [ ] Create `apps/ai-service/app/api/workflow.py` with `POST /api/workflow/start` endpoint <!-- id: 2.3.1 -->
+  - [ ] Mount workflow router in `apps/ai-service/main.py` <!-- id: 2.3.2 -->
+  - [ ] Test workflow execution via FastAPI Swagger UI <!-- id: 2.3.3 -->
+
+- [ ] **Step 4: NestJS Workflow Controller & Integration (`apps/api`)** <!-- id: step-2-4 -->
+  - [ ] Create `apps/api/src/workflow/workflow.controller.ts` bridge to FastAPI <!-- id: 2.4.1 -->
+  - [ ] Verify end-to-end integration and NestJS build <!-- id: 2.4.2 -->

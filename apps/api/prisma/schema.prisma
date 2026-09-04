@@ -1,0 +1,117 @@
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+enum Role {
+  USER
+  ADMIN
+}
+
+enum ProjectStatus {
+  DRAFT
+  IN_PROGRESS
+  PAUSED
+  COMPLETED
+  FAILED
+}
+
+enum AgentRole {
+  PROJECT_MANAGER
+  BUSINESS_ANALYST
+  SYSTEM_ARCHITECT
+  UI_UX_DESIGNER
+  FRONTEND_DEVELOPER
+  BACKEND_DEVELOPER
+  QA_ENGINEER
+  DOCUMENTATION_ENGINEER
+  TECH_LEAD_REVIEWER
+}
+
+enum ArtifactType {
+  PROJECT_SCOPE
+  USER_STORIES
+  SYSTEM_ARCHITECTURE
+  DATABASE_SCHEMA
+  API_SPECIFICATION
+  UI_WIREFRAME
+  CODE_STRUCTURE
+  TEST_CASES
+  DOCUMENTATION
+}
+
+enum ApprovalDecision {
+  PENDING
+  APPROVED
+  REJECTED
+  REVISION_REQUESTED
+}
+
+model User {
+  id           String    @id @default(uuid())
+  email        String    @unique
+  passwordHash String
+  name         String?
+  role         Role      @default(USER)
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  projects     Project[]
+}
+
+model Project {
+  id            String        @id @default(uuid())
+  userId        String
+  user          User          @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title         String
+  description   String
+  preferredTech String?
+  status        ProjectStatus @default(DRAFT)
+  currentStage  String?
+  createdAt     DateTime      @default(now())
+  updatedAt     DateTime      @updatedAt
+  agentRuns     AgentRun[]
+  artifacts     Artifact[]
+  approvals     Approval[]
+}
+
+model AgentRun {
+  id              String     @id @default(uuid())
+  projectId       String
+  project         Project    @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  agentRole       AgentRole
+  status          String
+  inputPrompt     String?    @db.Text
+  outputPayload   String?    @db.Text
+  executionTimeMs Int?
+  createdAt       DateTime   @default(now())
+  artifacts       Artifact[]
+  approvals       Approval[]
+}
+
+model Artifact {
+  id            String       @id @default(uuid())
+  projectId     String
+  project       Project      @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  agentRunId    String?
+  agentRun      AgentRun?    @relation(fields: [agentRunId], references: [id], onDelete: SetNull)
+  artifactType  ArtifactType
+  title         String
+  content       String       @db.Text
+  versionNumber Int          @default(1)
+  createdAt     DateTime     @default(now())
+}
+
+model Approval {
+  id           String           @id @default(uuid())
+  projectId    String
+  project      Project          @relation(fields: [projectId], references: [id], onDelete: Cascade)
+  agentRunId   String?
+  agentRun     AgentRun?        @relation(fields: [agentRunId], references: [id], onDelete: SetNull)
+  decision     ApprovalDecision @default(PENDING)
+  userFeedback String?          @db.Text
+  createdAt    DateTime         @default(now())
+}

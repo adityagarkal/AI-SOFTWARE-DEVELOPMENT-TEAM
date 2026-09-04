@@ -72,10 +72,19 @@ This document serves as an **Executive Summary Log** of every Phase and Step com
 
 ---
 
-## Phase 2: Database Schema & LangGraph Foundations (UPCOMING)
-**Target Period:** September 25, 2026 – October 16, 2026 | **Status:** ⏳ Pending
+## Phase 2: Database Schema & LangGraph Foundations (IN PROGRESS)
+**Target Period:** September 25, 2026 – October 16, 2026 | **Status:** 🟡 In Progress
 
-*(Detailed step summaries will be added here step-by-step as we execute Phase 2)*
+### 📌 Step 1: NestJS Prisma ORM Setup & Database Schema Design (`apps/api`)
+*   **Goal:** Configure PostgreSQL ORM and define typed relational database schemas.
+*   **Rationale:** Establishes typed relational models for users, project metadata, agent execution runs, versioned artifacts, and human approval decisions.
+*   **What was changed:**
+    *   Installed Prisma ORM v6.4.0 (`prisma`, `@prisma/client`) in `apps/api/`.
+    *   Created [schema.prisma](file:///d:/BE%20Major%20Project/AI-SOFTWARE-DEVELOPMENT-TEAM/apps/api/prisma/schema.prisma) with models: `User`, `Project`, `AgentRun`, `Artifact`, `Approval`.
+    *   Created `PrismaService` and global `PrismaModule` in NestJS (`apps/api/src/prisma/`).
+*   **Verification & Test Results:**
+    *   Ran `npx prisma generate` — generated typed Prisma Client in 82ms.
+    *   Ran `npm run build` in `apps/api/` — NestJS build succeeded with Prisma ORM integrated.
 
 ---
 
